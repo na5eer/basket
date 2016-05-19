@@ -22,7 +22,7 @@ The basket can contain one or more of the following items: Bananas, Oranges, App
 
 #### Build
 ```sh
-git clone https://github.com/na5eer/shop.git shop
+git clone https://github.com/na5eer/basket.git shop
 cd shop
 mvn clean install
 ```
