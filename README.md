@@ -17,8 +17,8 @@ The basket can contain one or more of the following items: Bananas, Oranges, App
 ## Building
 
 #### Prerequisites:
- 1. Java (JDK) 1.5+
- 2. Apache Maven 3+
+ 1. Java (JDK) 1.8
+ 2. Apache Maven 3.5+
 
 #### Build
 ```sh
