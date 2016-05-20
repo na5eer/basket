@@ -11,7 +11,7 @@ import java.util.Collection;
  * pricer interface and a concrete classes that implement this interface.
  * 
  * However, as we have no additional requirements at this stage and there is no
- * need to bloat the code with additional code, the interface part is being
+ * need to bloat the code, the interface part is being
  * skipped. All we need is a single static method to calculate the price based
  * on our requirements.
  * 
@@ -37,40 +37,16 @@ public class Pricer {
 	/**
 	 * Calculate total price for a given collection of items.
 	 * 
-	 * @param items
+	 * @param basket is collection of items
 	 * @return long price
 	 */
-	public static long calculateTotalPrice(final Collection<Item> items) {
-
-		if (items == null || items.isEmpty()) {
-			return 0;
-		}
-
-		long totalPrice = 0;
-		for (Item item : items) {
-			totalPrice += item.getPrice();
-		}
+	public static long calculateTotalPrice(final Collection<Item> basket) {
+		long totalPrice = (basket == null ? 0 : basket.stream().mapToLong(s -> s.getPrice()).sum());
 
 		if (totalPrice < 0) {
 			throw new RuntimeException("The system is unable to calulate the total price.");
 		}
 		return totalPrice;
 	}
-	
-
-/*
-	// The below code demonstrates how the calculation can be simplified even
-	// further in java 8 using lambdas. However, as java 8 is not widely
-	// used in production environments, it has been commented out.
-
-	public static long calculateTotalPrice(final Collection<Item> items) {
-		long totalPrice = (items == null ? 0 : items.stream().mapToLong(s -> s.getPrice()).sum());
-
-		if (totalPrice < 0) {
-			throw new RuntimeException("The system is unable to calulate the total price.");
-		}
-		return totalPrice;
-	}
-*/
 
 }

@@ -28,43 +28,45 @@ public class PricerTest {
 
 	@Test
 	public void priceSimpleBasket() {
-		
+
 		List<Item> basket = new ArrayList<Item>();
 		basket.add(new Apple(10));
 		basket.add(new Orange(11));
 		basket.add(new Banana(12));
 		basket.add(new Lemon(13));
 		basket.add(new Peache(14));
-		
+
 		long totalCost = Pricer.calculateTotalPrice(basket);
 		assertEquals((10 + 11 + 12 + 13 + 14), totalCost);
 	}
 
 	@Test
 	public void priceMixedBasket() {
-		
+
 		List<Item> basket = new ArrayList<Item>();
-		basket.add(new Apple(10));
+		basket.add(new Apple(10, 3.25)); // this equals 32.5 pence, which needs
+											// to be rounded to 33 pence.
 		basket.add(new Apple(10));
 		basket.add(new Orange(11));
 		basket.add(new Banana(12));
 		basket.add(new Peache(14));
 		basket.add(new Apple(10));
 		basket.add(new Lemon(13));
-		basket.add(new Peache(14));
+		basket.add(new Peache(109, 13.473)); // this equals 32.2 pence, which
+												// rounded will be 32 pence.
 
 		long totalCost = Pricer.calculateTotalPrice(basket);
-		assertEquals((10 + 10 + 11 + 12 + 14 + 10 + 13 + 14), totalCost);
+		assertEquals((33 + 10 + 11 + 12 + 14 + 10 + 13 + 1469), totalCost, 0);
 	}
 
-	@Test (expected=RuntimeException.class)
+	@Test(expected = RuntimeException.class)
 	public void priceItemWithMaxVaue() {
-		
+
 		List<Item> basket = new ArrayList<Item>();
 		basket.add(new Apple(Long.MAX_VALUE));
 		basket.add(new Orange(1));
 
 		Pricer.calculateTotalPrice(basket);
 	}
-	
+
 }
