@@ -13,7 +13,6 @@ The basket can contain one or more of the following items: Bananas, Oranges, App
 ```
 
 
-
 ## Building
 
 #### Prerequisites:
