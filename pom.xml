@@ -5,8 +5,10 @@
   <artifactId>Basket</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Basket</name>
+  <name>Basket</name>a
+  <description> a basket </description>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
