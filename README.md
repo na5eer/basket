@@ -26,3 +26,6 @@ cd shop
 mvn clean install
 ```
 Once the build process completes, the binaries will be located in shop/target folder
+
+
+[Phil]
